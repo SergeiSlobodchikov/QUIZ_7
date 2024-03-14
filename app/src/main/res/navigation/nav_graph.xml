@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.quiz.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.quiz.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" >
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.quiz.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <argument
+            android:name="number"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+
+    <!--    Этот код представляет собой XML, который определяет навигационную диаграмму для приложения.
+            Каждый фрагмент имеет свою уникальную идентификацию и имя класса.
+            Также в диаграмме определены действия, которые позволяют переходить от одного фрагмента к другому. Например, action_welcomeFragment_to_quizFragment позволяет перейти от WelcomeFragment к QuizFragment.
+            Кроме того, в ResultFragment определены аргументы, которые можно передать при переходе к этому фрагменту. Например, number - это аргумент типа integer, который можно передать при переходе к ResultFragment.
+            Наконец, в диаграмме определено, какой фрагмент является начальной точкой навигации. В данном случае, welcomeFragment является начальной точкой.
+    -->
+</navigation>
